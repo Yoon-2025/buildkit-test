@@ -7,7 +7,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: secrets
+    environment: secret
     steps:
       - uses: actions/checkout@v4
 
