@@ -4,7 +4,7 @@ FROM public.ecr.aws/lambda/python:3.12
 RUN bash -c "echo hihi" && sleep 3
 
 RUN --mount=type=secret,id=git_token \
-    bash -c "echo 'Token: $(cat /run/secrets/git_token)'" && sleep 3
+    bash -c 'if [ -f /run/secrets/git_token ]; then echo "SECRET_OK"; else echo "SECRET_MISSING"; fi' && sleep 5
 
 #WORKDIR /var/task
 #
