@@ -10,6 +10,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - name: Check secret exists (safe)
+        run: |
+          if [ -z "${{ secrets.GIT_TOKEN }}" ]; then
+            echo "GIT_TOKEN is EMPTY"
+          else
+            echo "GIT_TOKEN is PRESENT"
+          fi
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
